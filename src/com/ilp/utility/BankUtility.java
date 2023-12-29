@@ -51,9 +51,15 @@ public class BankUtility {
 		break;
 		
 		case 4:BankServices.manageAccount(customer,productList,accountList);
+		break;
+		
+		case 5:BankServices.displayCustomer(customer,accountList);
+		break;
+		
+		case 6:Exit();
+		break;
 
-		
-		
+	
 		
 		}System.out.println("do you want to go to main menu)");
 		 choice=scanner.next().charAt(0);
@@ -61,6 +67,11 @@ public class BankUtility {
 		
 		}while(choice=='y');
 		
+		
+	}
+
+	private static void Exit() {
+		// TODO Auto-generated method stub
 		
 	}
 

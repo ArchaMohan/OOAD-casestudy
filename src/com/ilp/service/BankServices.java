@@ -241,4 +241,26 @@ private static void deposit(ArrayList<Account> accountListaccountList) {
 //	int amount=scanner.nextInt();
 //	double updatedBalance= Account.getBalance()+ amount;
 
+}
+
+
+
+public static void displayCustomer(Customer customer, ArrayList<Account> accountList) {
+	// TODO Auto-generated method stub
+	
+	Scanner scanner= new Scanner(System.in);
+	System.out.println("enter customer code");
+	String code=scanner.nextLine();
+//	for(Account account:createCustomer().customerCreated)
+	System.out.println("Customer Code : "+customer.getCustomerCode());
+	 System.out.println("Customer Name : "+customer.getCustomerName());
+	 
+//	 System.out.println("Customer Name : "+customerCreated.getCustomerName());
+	
+	for(Account account : customer.getAccount()) {
+		System.out.println("Account Number : "+account.getAccountNo());
+		System.out.println("Account Type : "+account.getAccountType());
+		System.out.println("Account Balance : "+account.getBalance());
+}
+	
 }}
