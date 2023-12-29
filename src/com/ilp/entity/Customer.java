@@ -32,7 +32,7 @@ public class Customer {
 		this.account = account;
 	}
 
-	public Customer(String customerName, String customerCode, ArrayList<Account> accountList) {
+	public Customer( String customerCode,String customerName, ArrayList<Account> accountList) {
 		
 		this.customerName = customerName;
 		this.customerCode = customerCode;

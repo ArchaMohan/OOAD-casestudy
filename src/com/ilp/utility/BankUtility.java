@@ -27,7 +27,10 @@ public class BankUtility {
 		ArrayList<Product> productServiceList = new ArrayList<Product>();
 		ArrayList<Account> accountList = new ArrayList<Account>();
 		String customerProduct=null;
+//		double updatedBalance=null;
+
 		Customer customer = null;
+		Account account=null;
 		Scanner scanner = new Scanner(System.in);
 		
 		do {
@@ -47,10 +50,10 @@ public class BankUtility {
 		break;
 		
 		case 3:customer = BankServices.createCustomer(customer,productList);
-		System.out.println(accountList);
+		System.out.println(customer);
 		break;
 		
-		case 4:BankServices.manageAccount(customer,productList,accountList);
+		case 4:BankServices.manageAccount(customer);
 		break;
 		
 		case 5:BankServices.displayCustomer(customer,accountList);

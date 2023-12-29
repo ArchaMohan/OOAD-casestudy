@@ -186,61 +186,82 @@ public class BankServices {
 ///MANAGE ACCOUNT
 
 
-public static void manageAccount(Customer customer, ArrayList<Product> productList, ArrayList<Account> accountList) {
+public static void manageAccount(Customer customer) {
 	// TODO Auto-generated method stub
 
 	Scanner scanner =new Scanner(System.in);
 	System.out.println("Enter customer id:");
 	String customerId= scanner.nextLine();
+	System.out.println("customerId="+customerId);
+	System.out.println("customercode="+customer.getCustomerCode());
 	
 	if(customer.getCustomerCode().equals(customerId)) {
 		System.out.println(customer.getCustomerName()+"has the following accounts");
-		for(Account account:customer.getAccount()) {
-			System.out.println(account.getProduct().getProductName());
+		for(Account account1:customer.getAccount()) {
+			System.out.println(account1.getProduct().getProductName());
 		}
 	}
 	System.out.println("enter your choice");
-	System.out.println("1.Deposit  2.withdraw   2.display balance");
-	int choice=scanner.nextInt();
-	char continueChoice;
+//	System.out.println("1.Deposit  2.withdraw   2.display balan");
+	 Account selectedAccount=null;
+	String choice=scanner.nextLine();
+	for(Account account1:customer.getAccount()) {
+		if(account1.getProduct().getProductName().equalsIgnoreCase(choice))
+			selectedAccount=account1;
+		
+	}System.out.println(selectedAccount);
+	char continueChoice='n';
 	do {
-	switch(choice) {
-	case 1: deposit(accountList);
+		System.out.println("enter your choice");
+		System.out.println("1.Deposit  2.withdraw   2.display balance");
+		int choice1=scanner.nextInt();
+	switch(choice1) {
+	case 1: selectedAccount.setBalance( deposit(selectedAccount));
+	System.out.println(selectedAccount.getBalance());
 	break;
-	case 2: withdraw(accountList);
-	break;
-	case 3: displayBalance(accountList);
+	case 2: selectedAccount.setBalance(withdraw(selectedAccount));
+	System.out.println(selectedAccount.getBalance());
 	
-	}
-	System.out.println("do you want to continue(y/n)");
-	continueChoice=scanner.next().charAt(0);
+	break;
+	case 3: displayBalance(selectedAccount);
+//	
+	}System.out.println("do you want to go to main menu)");
+	 char userChoice=scanner.next().charAt(0);
 	scanner.nextLine();
-}while(continueChoice=='y');
 	
-	
-}
-private static void displayBalance(ArrayList<Account> accountList) {
+	}while(continueChoice=='y');
+	}
+
+
+///DISPLAY BALANCE
+
+private static void displayBalance(Account selectedAccount ) {
 	// TODO Auto-generated method stub
+	System.out.println("The accounts are"+selectedAccount.getBalance());
 	
 }
 
+///WITHDRAW
 
-
-
-private static void withdraw(ArrayList<Account> accountList) {
-	// TODO Auto-generated method stub
-	
-}
-
-
-
-private static void deposit(ArrayList<Account> accountListaccountList) {
+private static double withdraw(Account selectedAccount) {
 	// TODO Auto-generated method stub
 	Scanner scanner=new Scanner(System.in);
-//	System.out.println("enter the amount to deposit");
-//	int amount=scanner.nextInt();
-//	double updatedBalance= Account.getBalance()+ amount;
+	System.out.println("enter the amount to withdraw");
+	int amount=scanner.nextInt();
+	double updatedBalance= selectedAccount.getBalance()-amount;
+	return updatedBalance;
+}
 
+
+///DEPOSIT
+private static double deposit(Account selectedAccount) {
+	// TODO Auto-generated method stub
+	Scanner scanner=new Scanner(System.in);
+	System.out.println("enter the amount to deposit");
+	int amount=scanner.nextInt();
+	double updatedBalance= selectedAccount.getBalance()+amount;
+	return updatedBalance;
+	
 }
 
 
@@ -248,19 +269,13 @@ private static void deposit(ArrayList<Account> accountListaccountList) {
 public static void displayCustomer(Customer customer, ArrayList<Account> accountList) {
 	// TODO Auto-generated method stub
 	
-	Scanner scanner= new Scanner(System.in);
-	System.out.println("enter customer code");
-	String code=scanner.nextLine();
-//	for(Account account:createCustomer().customerCreated)
-	System.out.println("Customer Code : "+customer.getCustomerCode());
-	 System.out.println("Customer Name : "+customer.getCustomerName());
-	 
-//	 System.out.println("Customer Name : "+customerCreated.getCustomerName());
-	
-	for(Account account : customer.getAccount()) {
-		System.out.println("Account Number : "+account.getAccountNo());
-		System.out.println("Account Type : "+account.getAccountType());
-		System.out.println("Account Balance : "+account.getBalance());
-}
-	
 }}
+
+
+
+
+
+
+
+
+
